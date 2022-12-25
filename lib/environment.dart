@@ -10,6 +10,7 @@ class Environment {
   static const String countriesUrl = '${API_BASE_V3__URL}countries';
   static const String leaguesUrl = '${API_BASE_V3__URL}leagues';
   static const String standingsUrl = '${API_BASE_V3__URL}standings';
+  static const String topScorersUrl = '${API_BASE_V3__URL}players/topscorers';
 
   static final Map<String, String> requestHeaders = {
     'X-RapidAPI-Key': Key.API_KEY,

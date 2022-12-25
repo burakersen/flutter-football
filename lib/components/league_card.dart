@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_football/screens/league_details_screen.dart';
 import 'package:flutter_football/screens/standings_screen.dart';
 
 import '../models/league.dart';
@@ -16,7 +17,7 @@ class LeagueCard extends StatelessWidget {
       onTap: () => {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => StandingsScreen(league: league, season: 2022)),
+          MaterialPageRoute(builder: (context) => LeagueDetailsScreen(league: league, season: 2022)),
         ),
       },
       child: Row(
