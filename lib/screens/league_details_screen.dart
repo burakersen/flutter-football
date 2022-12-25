@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_football/screens/fixture_screen.dart';
 import 'package:flutter_football/screens/standings_screen.dart';
 import 'package:flutter_football/screens/top_scorers_screen.dart';
 
@@ -26,10 +27,18 @@ class _LeagueDetailsScreenState extends State<LeagueDetailsScreen> {
   @override
   void initState() {
     super.initState();
+    /*var now = DateTime.now();
+    var formatter = DateFormat('yyyy-MM-dd');
+    String formattedDate = formatter.format(now);*/
+
+   /* DateTime now = new DateTime.now();
+    DateTime date = new DateTime(now.year, now.month, now.day);
+    print(date);*/
+
     pages = <Widget>[
       StandingsScreen(league: widget.league, season: widget.season),
       TopScorersScreen(league: widget.league, season: widget.season),
-      Container(color: Colors.green),
+      FixtureScreen(league: widget.league, season: widget.season, date: '2022-11-12',),
     ];
   }
 
