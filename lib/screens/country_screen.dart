@@ -17,9 +17,10 @@ class _CountryScreenState extends State<CountryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0XFF567189),
         title: Text(
-          'Flutter Football',
-          style: Theme.of(context).textTheme.headline6,
+          'Countries',
+          style: TextStyle(fontSize: 20,color: Colors.white),
         ),
       ),
       body: Container(

@@ -27,27 +27,27 @@ class TopScorers {
 
 class Player {
   int? id;
-  String? name;
+  late String name;
   String? firstname;
   String? lastname;
   int? age;
-  String? nationality;
+  late String nationality;
   String? height;
   String? weight;
   bool? injured;
-  String? photo;
+  late String photo;
 
   Player(
     {this.id,
-      this.name,
+      required this.name,
       this.firstname,
       this.lastname,
       this.age,
-      this.nationality,
+      required this.nationality,
       this.height,
       this.weight,
       this.injured,
-      this.photo,});
+      required this.photo,});
 
   Player.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -81,21 +81,21 @@ class Player {
 }
 
 class Statistics {
-  Team? team;
+  late Team team;
   Leaguee? league;
   Games? games;
   Goals? goals;
   Cards? cards;
 
   Statistics(
-  {this.team,
+  {required this.team,
     this.league,
     this.games,
     this.goals,
     this.cards,});
 
   Statistics.fromJson(Map<String, dynamic> json) {
-    team = json['team'] != null ? Team.fromJson(json['team']) : null;
+    team = (json['team'] != null ? Team.fromJson(json['team']) : null)!;
     league = json['league'] != null ? Leaguee.fromJson(json['league']) : null;
     games = json['games'] != null ? Games.fromJson(json['games']) : null;
     goals = json['goals'] != null ? Goals.fromJson(json['goals']) : null;
@@ -127,13 +127,13 @@ class Statistics {
 
 class Team {
   int? id;
-  String? name;
-  String? logo;
+  late String name;
+  late String logo;
 
   Team(
     {this.id,
-      this.name,
-      this.logo,});
+      required this.name,
+      required this.logo,});
 
   Team.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -156,7 +156,7 @@ class Leaguee {
   int? id;
   String? name;
   String? country;
-  String? logo;
+  late String logo;
   String? flag;
   int? season;
 
@@ -164,7 +164,7 @@ class Leaguee {
       {this.id,
         this.name,
         this.country,
-        this.logo,
+        required this.logo,
         this.flag,
         this.season});
 

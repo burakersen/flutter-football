@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_football/screens/fixture_screen.dart';
 import 'package:flutter_football/screens/standings_screen.dart';
 import 'package:flutter_football/screens/top_scorers_screen.dart';
+import 'package:jiffy/jiffy.dart';
 
 import '../models/league.dart';
 
 class LeagueDetailsScreen extends StatefulWidget {
   final League league;
   final int season;
+
 
   const LeagueDetailsScreen({
     Key? key,
@@ -21,24 +23,18 @@ class LeagueDetailsScreen extends StatefulWidget {
 
 class _LeagueDetailsScreenState extends State<LeagueDetailsScreen> {
   int _selectedIndex = 0;
+  String date ="";
 
   List<Widget>? pages;
 
   @override
   void initState() {
     super.initState();
-    /*var now = DateTime.now();
-    var formatter = DateFormat('yyyy-MM-dd');
-    String formattedDate = formatter.format(now);*/
-
-   /* DateTime now = new DateTime.now();
-    DateTime date = new DateTime(now.year, now.month, now.day);
-    print(date);*/
 
     pages = <Widget>[
       StandingsScreen(league: widget.league, season: widget.season),
       TopScorersScreen(league: widget.league, season: widget.season),
-      FixtureScreen(league: widget.league, season: widget.season, date: '2022-11-12',),
+      FixtureScreen(league: widget.league, season: widget.season, date: date, onDateChange: _onDateChange),
     ];
   }
 
@@ -49,13 +45,26 @@ class _LeagueDetailsScreenState extends State<LeagueDetailsScreen> {
     widget.league;
   }
 
+  void _onDateChange(DateTime changedDate){
+    setState(() {
+      date = Jiffy(changedDate).format("yyyy-MM-dd");
+      pages = <Widget>[
+        StandingsScreen(league: widget.league, season: widget.season),
+        TopScorersScreen(league: widget.league, season: widget.season),
+        FixtureScreen(league: widget.league, season: widget.season, date: date, onDateChange: _onDateChange),
+      ];
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0XFF567189),
         title: Text(
-          'Flutter Football${widget.season}',
-          style: Theme.of(context).textTheme.headline6,
+          '${widget.league.name} ${widget.season} - ${widget.season + 1} ',
+          style: TextStyle(fontSize: 20,color: Colors.white),
         ),
       ),
       body: pages?[_selectedIndex],
@@ -63,7 +72,7 @@ class _LeagueDetailsScreenState extends State<LeagueDetailsScreen> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0XFF567189),
         onTap: _onItemTapped,
         items:const [
           BottomNavigationBarItem(
@@ -76,7 +85,7 @@ class _LeagueDetailsScreenState extends State<LeagueDetailsScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.collections_bookmark),
-            label: 'Table',
+            label: 'Fixture',
           ),
         ],
       ),

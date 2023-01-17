@@ -17,12 +17,12 @@ class FixtureService {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> json = jsonDecode(response.body);
-
       if (json['response'] != null) {
         final fixtures = <Fixture>[];
         json['response'].forEach((v) {
           fixtures.add(Fixture.fromJson(v));
         });
+        print(fixtures);
         return fixtures;
       } else {
         return [];

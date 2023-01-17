@@ -4,7 +4,7 @@ class Standings {
   int? points;
   int? goalsDiff;
   String? group;
-  String? form;
+  late String form;
   String? status;
   String? description;
   All? all;
@@ -17,7 +17,7 @@ class Standings {
         this.points,
         this.goalsDiff,
         this.group,
-        this.form,
+        required this.form,
         this.status,
         this.description,
         this.all,
@@ -92,14 +92,14 @@ class All {
 }
 
 class Team {
-  int? id;
-  String? name;
-  String? logo;
+  late int id;
+  late String name;
+  late String logo;
 
   Team(
-      {this.id,
-        this.name,
-        this.logo,});
+      {required this.id,
+        required this.name,
+        required this.logo,});
 
   Team.fromJson(Map<String, dynamic> json) {
     id = json['id'];

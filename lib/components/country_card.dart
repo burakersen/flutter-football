@@ -27,7 +27,7 @@ class CountryCard extends StatelessWidget {
           const SizedBox(width: 16),
           Expanded(
             child: Card(
-              color: Colors.red,
+              color: Color(0XFFE1D7C6),
               elevation: 0,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
@@ -46,7 +46,8 @@ class CountryCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                         fontWeight: FontWeight.w500,
-                        fontSize: 30
+                        fontSize: 30,
+                        color: Color(0XFF363432),
                     ),
                   ),
                 ],

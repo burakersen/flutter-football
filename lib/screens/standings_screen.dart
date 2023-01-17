@@ -19,19 +19,23 @@ class StandingsScreen extends StatefulWidget {
 
 class _StandingsScreenState extends State<StandingsScreen> {
   StandingsService standingsService = StandingsService();
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FutureBuilder(
-        future: standingsService.fetchStandings(widget.league, widget.season),
-        builder: (context, AsyncSnapshot<List<Standings>> snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return StandingsTable(standings: snapshot.data ?? []);
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
+      child:
+        FutureBuilder(
+          future: standingsService.fetchStandings(widget.league, widget.season),
+          builder: (context, AsyncSnapshot<List<Standings>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return StandingsTable(standings: snapshot.data ?? []);
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
+
+
     );
   }
 }

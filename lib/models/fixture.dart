@@ -118,13 +118,13 @@ class Venue {
 }
 
 class Status {
-  String? long;
-  String? short;
+  late String long;
+  late String short;
   int? elapsed;
 
   Status(
-    {this.long,
-      this.short,
+    {required this.long,
+      required this.short,
       this.elapsed,});
 
   Status.fromJson(Map<String, dynamic> json) {
@@ -216,14 +216,14 @@ class Teams {
 
 class TeamsDetails {
   int? id;
-  String? name;
-  String? logo;
+  late String name;
+  late String logo;
   bool? winner;
 
   TeamsDetails(
       {this.id,
-        this.name,
-        this.logo,
+        required this.name,
+        required this.logo,
         this.winner,});
 
   TeamsDetails.fromJson(Map<String, dynamic> json) {
@@ -246,12 +246,12 @@ class TeamsDetails {
 }
 
 class Goals {
-  int? home;
-  int? away;
+   int? home;
+   int? away;
 
   Goals(
       {this.home,
-        this.away,});
+         this.away,});
 
   Goals.fromJson(Map<String, dynamic> json) {
     home = json['home'];
