@@ -52,7 +52,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
           onTap: () async{
             DateTime? pickedDate = await showDatePicker(
                 context: context,
-                initialDate: widget.date!="" ? Jiffy(widget.date).dateTime : DateTime.now(),
+                initialDate: widget.date!="" ? Jiffy(widget.date).dateTime : Jiffy([widget.season, 08, 01]).dateTime,
                 firstDate: DateTime(widget.season),
                 lastDate: DateTime(widget.season + 2)).then((pickedDate) {widget.onDateChange(pickedDate);});
 
